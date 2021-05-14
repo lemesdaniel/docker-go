@@ -21,17 +21,5 @@ RUN go get -u github.com/cosmtrek/air
 
 ENTRYPOINT ["air"]
 
-### Imagem intermediária de compilação
-FROM base AS builder
-WORKDIR /app
-
-
-COPY ../.. /app
-RUN go mod download \
-    && go mod verify
-
-### precisa definiar o nome do aplicativo, pode pegar por ARGS
-
-RUN go build -o aa-app -a .
 
 
